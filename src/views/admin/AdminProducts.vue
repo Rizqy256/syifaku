@@ -60,10 +60,12 @@ const user = useUserStore()
 const products = ref([])
 const loading = ref(true)
 
+const BASE_URL = 'http://localhost:3000'
+
 async function fetchProduk() {
   loading.value = true
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`)
+    const res = await axios.get(`${BASE_URL}/products`)
     products.value = Array.isArray(res.data)
       ? res.data
       : res.data.products || []
@@ -84,7 +86,7 @@ watchEffect(() => {
 async function hapusProduk(id) {
   if (confirm('Yakin ingin menghapus produk ini?')) {
     try {
-      await axios.delete(`${import.meta.env.VITE_API_URL}/products/${id}`)
+      await axios.delete(`${BASE_URL}/products/${id}`)
       fetchProduk()
     } catch (err) {
       console.error('Gagal menghapus produk:', err)
@@ -92,6 +94,7 @@ async function hapusProduk(id) {
   }
 }
 </script>
+
 
 <style scoped>
 .admin-products {

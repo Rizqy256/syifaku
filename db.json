@@ -1,0 +1,88 @@
+{
+  "users": [
+    {
+      "id": "1",
+      "name": "Admin",
+      "email": "admin@food.com",
+      "password": "admin123",
+      "role": "admin"
+    },
+    {
+      "id": "2",
+      "name": "User",
+      "email": "user@food.com",
+      "password": "user123",
+      "role": "user"
+    },
+    {
+      "id": "ea19",
+      "name": "hm",
+      "email": "hm@gmail.com",
+      "password": "123",
+      "role": "user"
+    }
+  ],
+  "products": [
+    {
+      "id": "1",
+      "name": "Nasi Goreng",
+      "description": "Nasi goreng spesial dengan telur dan ayam.",
+      "price": 25000,
+      "image": "https://cdn1-production-images-kly.akamaized.net/j4KFsV4Pl08lGnhCED4Gm0LR3kE=/0x148:1920x1230/1200x675/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3093328/original/069244600_1585909700-fried-2509089_1920.jpg"
+    },
+    {
+      "id": "2",
+      "name": "Burger",
+      "description": "Burger daging sapi premium dengan keju leleh.",
+      "price": 30000,
+      "image": "https://static01.nyt.com/images/2022/06/27/dining/kc-mushroom-beef-burgers/merlin_209008674_b3fa58fa-9bb1-4cfe-a08a-40b4dda0de78-jumbo.jpg"
+    }
+  ],
+  "orders": [
+    {
+      "id": "o1",
+      "userId": "2",
+      "date": "2025-07-13 14:10",
+      "items": [
+        {
+          "id": "1",
+          "name": "Nasi Goreng",
+          "price": 25000,
+          "quantity": 2
+        }
+      ],
+      "total": 50000
+    },
+    {
+      "id": "o2",
+      "userId": "1",
+      "date": "2025-07-13 14:30",
+      "items": [
+        {
+          "id": "2",
+          "name": "Burger",
+          "price": 30000,
+          "quantity": 1
+        }
+      ],
+      "total": 30000
+    },
+    {
+      "id": "697f",
+      "date": "7/13/2025, 10:12:18 PM",
+      "items": [
+        {
+          "id": "1",
+          "name": "Nasi Goreng",
+          "description": "Nasi goreng spesial dengan telur dan ayam.",
+          "price": 25000,
+          "image": "https://cdn1-production-images-kly.akamaized.net/j4KFsV4Pl08lGnhCED4Gm0LR3kE=/0x148:1920x1230/1200x675/filters:quality(75):strip_icc():format(jpeg)/kly-media-production/medias/3093328/original/069244600_1585909700-fried-2509089_1920.jpg",
+          "quantity": 1
+        }
+      ],
+      "total": 25000,
+      "userId": "1"
+    }
+  ],
+  "carts": []
+}

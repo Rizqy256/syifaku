@@ -7,7 +7,8 @@ export const useUserStore = defineStore('user', {
   getters: {
     isLoggedIn: (state) => !!state.currentUser,
     role: (state) => state.currentUser?.role || '',
-    name: (state) => state.currentUser?.name || ''
+    name: (state) => state.currentUser?.name || '',
+    id: (state) => state.currentUser?.id || '' // ✅ Getter user ID untuk digunakan di query
   },
   actions: {
     login(user) {

@@ -39,11 +39,19 @@ const addToCart = (item) => {
   }, 2000)
 }
 
+const BASE_URL = 'http://localhost:3000' // ✅ Tambahkan base URL
+
 onMounted(async () => {
-  const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`)
-  products.value = res.data
+  try {
+    const res = await axios.get(`${BASE_URL}/products`)
+    products.value = res.data
+  } catch (err) {
+    console.error('❌ Gagal mengambil produk:', err)
+    products.value = []
+  }
 })
 </script>
+
 
 <style scoped>
 .menu {

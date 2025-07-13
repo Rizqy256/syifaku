@@ -47,6 +47,7 @@ const router = useRouter()
 
 const showNotif = ref(false)
 const notifText = ref('')
+const BASE_URL = 'http://localhost:3000' // ✅ Pakai localhost langsung
 
 const checkout = async () => {
   if (!user.isLoggedIn) {
@@ -61,11 +62,11 @@ const checkout = async () => {
     date: new Date().toLocaleString(),
     items: cart.items,
     total: cart.totalPrice,
-    userId: user.id // ✅ Tambahkan userId agar bisa ditampilkan di riwayat
+    userId: user.id
   }
 
   try {
-    await axios.post(`${import.meta.env.VITE_API_URL}/orders`, order)
+    await axios.post(`${BASE_URL}/orders`, order)
     cart.clearCart()
     notifText.value = 'Checkout berhasil! Riwayat telah disimpan ke server.'
     showNotif.value = true
@@ -76,6 +77,7 @@ const checkout = async () => {
   }
 }
 </script>
+
 
 
 

@@ -20,6 +20,8 @@ const route = useRoute()
 const router = useRouter()
 const id = route.params.id
 
+const BASE_URL = 'http://localhost:3000'
+
 const name = ref('')
 const price = ref('')
 const image = ref('')
@@ -27,7 +29,7 @@ const description = ref('')
 
 onMounted(async () => {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/products/${id}`)
+    const res = await axios.get(`${BASE_URL}/products/${id}`)
     const product = res.data
     name.value = product.name
     price.value = product.price
@@ -40,7 +42,7 @@ onMounted(async () => {
 
 async function submit() {
   try {
-    await axios.put(`${import.meta.env.VITE_API_URL}/products/${id}`, {
+    await axios.put(`${BASE_URL}/products/${id}`, {
       name: name.value,
       price: parseInt(price.value),
       image: image.value,
@@ -53,3 +55,4 @@ async function submit() {
   }
 }
 </script>
+

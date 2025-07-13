@@ -38,6 +38,8 @@ const password = ref('')
 const router = useRouter()
 const user = useUserStore()
 
+const BASE_URL = 'http://localhost:3000' // ✅ Ganti ke localhost
+
 async function handleLogin() {
   // Validasi form kosong
   if (!email.value || !password.value) {
@@ -47,8 +49,8 @@ async function handleLogin() {
 
   try {
     const res = await axios.get(
-  `${import.meta.env.VITE_API_URL}/users?email=${email.value}&password=${password.value}`
-)
+      `${BASE_URL}/users?email=${email.value}&password=${password.value}`
+    )
 
     if (res.data.length > 0) {
       user.login(res.data[0])
@@ -62,6 +64,7 @@ async function handleLogin() {
   }
 }
 </script>
+
 
 <style scoped>
 .login-wrapper {

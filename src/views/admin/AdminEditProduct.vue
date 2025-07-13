@@ -37,18 +37,19 @@ const router = useRouter()
 const product = ref(null)
 
 const fetchProduct = async () => {
-  const res = await axios.get(`${import.meta.env.VITE_API_URL}/products/${route.params.id}`)
+  const res = await axios.get(`http://localhost:3000/products/${route.params.id}`)
   product.value = res.data
 }
 
 const handleUpdate = async () => {
-  await axios.put(`${import.meta.env.VITE_API_URL}/products/${route.params.id}`, product.value)
+  await axios.put(`http://localhost:3000/products/${route.params.id}`, product.value)
   alert('✅ Produk berhasil diperbarui')
   router.push('/admin/products')
 }
 
 onMounted(fetchProduct)
 </script>
+
 
 <style scoped>
 .edit-product {

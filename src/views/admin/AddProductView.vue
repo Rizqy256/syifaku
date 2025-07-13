@@ -51,7 +51,9 @@ async function submitForm() {
       image: image.value,
     }
 
-    await axios.post(`${import.meta.env.VITE_API_URL}/products`, newProduct)
+    // Ganti base URL langsung ke localhost
+    await axios.post('http://localhost:3000/products', newProduct)
+
     alert('✅ Produk berhasil ditambahkan!')
     router.push('/admin/products')
   } catch (error) {
@@ -60,6 +62,7 @@ async function submitForm() {
   }
 }
 </script>
+
 
 <style scoped>
 .add-product {

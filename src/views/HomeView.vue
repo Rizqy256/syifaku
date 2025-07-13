@@ -38,6 +38,8 @@ import { useRouter } from 'vue-router'
 const products = ref([])
 const router = useRouter()
 
+const BASE_URL = 'http://localhost:3000' // ✅ langsung pakai localhost
+
 const goToMenu = () => {
   router.push('/menu')
 }
@@ -51,7 +53,7 @@ const validProducts = computed(() =>
 
 onMounted(async () => {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`)
+    const res = await axios.get(`${BASE_URL}/products`)
     const data = res.data
 
     // ✅ Tangani 2 kemungkinan format data dari API
@@ -98,6 +100,7 @@ onMounted(async () => {
   }
 })
 </script>
+
 
 
 

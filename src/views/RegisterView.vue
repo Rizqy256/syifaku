@@ -33,6 +33,8 @@ const toast = ref(false)
 
 const router = useRouter()
 
+const BASE_URL = 'http://localhost:3000' // ✅ Ganti dari import.meta.env
+
 async function register() {
   error.value = false
 
@@ -41,21 +43,26 @@ async function register() {
     return
   }
 
-  await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
+  try {
+    await axios.post(`${BASE_URL}/users`, {
+      name: name.value,
+      email: email.value,
+      password: password.value,
+      role: 'user'
+    })
 
-    name: name.value,
-    email: email.value,
-    password: password.value,
-    role: 'user'
-  })
-
-  toast.value = true
-  setTimeout(() => {
-    toast.value = false
-    router.push('/login')
-  }, 2000)
+    toast.value = true
+    setTimeout(() => {
+      toast.value = false
+      router.push('/login')
+    }, 2000)
+  } catch (err) {
+    console.error('❌ Gagal registrasi:', err)
+    error.value = true
+  }
 }
 </script>
+
 
 <style scoped>
 .register-wrapper {

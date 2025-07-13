@@ -37,17 +37,23 @@ import { useUserStore } from '@/store/userStore'
 
 const orders = ref([])
 const user = useUserStore()
+const BASE_URL = 'http://localhost:3000' // ✅ Ganti VITE_API_URL dengan localhost
 
 onMounted(async () => {
-  const res = await axios.get(`${import.meta.env.VITE_API_URL}/orders?userId=${user.id}`)
-
-  orders.value = res.data
+  try {
+    const res = await axios.get(`${BASE_URL}/orders?userId=${user.id}`)
+    orders.value = res.data
+  } catch (err) {
+    console.error('❌ Gagal mengambil riwayat pesanan:', err)
+    orders.value = []
+  }
 })
 
 function getOrderTotal(order) {
   return order.items.reduce((sum, item) => sum + item.price * item.quantity, 0)
 }
 </script>
+
 
 <style scoped>
 .riwayat-wrapper {

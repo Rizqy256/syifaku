@@ -25,14 +25,17 @@
 <script setup>
 import axios from 'axios'
 import { ref, onMounted } from 'vue'
+import { useUserStore } from '@/store/userStore'
 
 const orders = ref([])
 const loading = ref(true)
+const user = useUserStore()
+
+const BASE_URL = 'http://localhost:3000'
 
 onMounted(async () => {
   try {
-    const res = await axios.get(`${import.meta.env.VITE_API_URL}/orders`)
-
+    const res = await axios.get(`${BASE_URL}/orders?userId=${user.id}`)
     orders.value = res.data
   } catch (err) {
     console.error('Gagal memuat data riwayat:', err)
@@ -41,6 +44,7 @@ onMounted(async () => {
   }
 })
 </script>
+
 
 
 <style scoped>
