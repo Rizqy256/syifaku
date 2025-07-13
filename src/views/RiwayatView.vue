@@ -31,7 +31,8 @@ const loading = ref(true)
 
 onMounted(async () => {
   try {
-    const res = await axios.get('http://localhost:3000/orders')
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/orders`)
+
     orders.value = res.data
   } catch (err) {
     console.error('Gagal memuat data riwayat:', err)

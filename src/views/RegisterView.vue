@@ -41,7 +41,8 @@ async function register() {
     return
   }
 
-  await axios.post('http://localhost:3000/users', {
+  await axios.post(`${import.meta.env.VITE_API_URL}/users`, {
+
     name: name.value,
     email: email.value,
     password: password.value,

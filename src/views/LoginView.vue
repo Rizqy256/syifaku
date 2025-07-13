@@ -46,7 +46,10 @@ async function handleLogin() {
   }
 
   try {
-    const res = await axios.get(`http://localhost:3000/users?email=${email.value}&password=${password.value}`)
+    const res = await axios.get(
+  `${import.meta.env.VITE_API_URL}/users?email=${email.value}&password=${password.value}`
+)
+
     if (res.data.length > 0) {
       user.login(res.data[0])
       router.push('/')

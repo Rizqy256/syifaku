@@ -26,21 +26,30 @@ const image = ref('')
 const description = ref('')
 
 onMounted(async () => {
-  const res = await axios.get(`http://localhost:3000/products/${id}`)
-  const product = res.data
-  name.value = product.name
-  price.value = product.price
-  image.value = product.image
-  description.value = product.description
+  try {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/products/${id}`)
+    const product = res.data
+    name.value = product.name
+    price.value = product.price
+    image.value = product.image
+    description.value = product.description
+  } catch (err) {
+    console.error('Gagal mengambil data produk:', err)
+  }
 })
 
 async function submit() {
-  await axios.put(`http://localhost:3000/products/${id}`, {
-    name: name.value,
-    price: parseInt(price.value),
-    image: image.value,
-    description: description.value
-  })
-  router.push('/admin/products')
+  try {
+    await axios.put(`${import.meta.env.VITE_API_URL}/products/${id}`, {
+      name: name.value,
+      price: parseInt(price.value),
+      image: image.value,
+      description: description.value
+    })
+    router.push('/admin/products')
+  } catch (err) {
+    console.error('Gagal mengupdate produk:', err)
+    alert('Gagal menyimpan perubahan.')
+  }
 }
 </script>

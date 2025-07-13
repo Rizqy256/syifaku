@@ -21,7 +21,13 @@ import axios from 'axios'
 const products = ref([])
 
 onMounted(async () => {
-  const res = await axios.get('http://localhost:3000/products')
-  products.value = res.data
+  try {
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`)
+    products.value = res.data
+  } catch (err) {
+    console.error('Gagal mengambil produk:', err)
+    products.value = []
+  }
 })
 </script>
+

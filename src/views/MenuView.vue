@@ -40,7 +40,7 @@ const addToCart = (item) => {
 }
 
 onMounted(async () => {
-  const res = await axios.get('http://localhost:3000/products')
+  const res = await axios.get(`${import.meta.env.VITE_API_URL}/products`)
   products.value = res.data
 })
 </script>

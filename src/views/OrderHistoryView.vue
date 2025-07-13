@@ -39,7 +39,8 @@ const orders = ref([])
 const user = useUserStore()
 
 onMounted(async () => {
-  const res = await axios.get(`http://localhost:3000/orders?userId=${user.id}`)
+  const res = await axios.get(`${import.meta.env.VITE_API_URL}/orders?userId=${user.id}`)
+
   orders.value = res.data
 })
 
