@@ -4,7 +4,8 @@
     <h2>{{ product.name }}</h2>
     <p class="desc">{{ product.description }}</p>
     <p class="price">Rp{{ product.price.toLocaleString() }}</p>
-    <button @click="$emit('add')">Tambah ke Keranjang</button>
+    <button @click="handleAdd">Tambah ke Keranjang</button>
+
   </div>
 </template>
 
