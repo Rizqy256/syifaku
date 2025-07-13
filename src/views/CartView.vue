@@ -1,3 +1,39 @@
+<template>
+  <section class="cart">
+    <h1 class="title">Keranjang Belanja</h1>
+
+    <div v-if="showNotif" class="toast">
+      ✅ {{ notifText }}
+    </div>
+
+    <div v-if="cart.items.length === 0" class="empty">
+      Keranjang masih kosong 😢
+    </div>
+
+    <div v-else class="cart-content">
+      <div v-for="item in cart.items" :key="item.id" class="cart-item">
+        <img :src="item.image" alt="product" />
+        <div class="info">
+          <h2>{{ item.name }}</h2>
+          <p class="price">Rp{{ item.price.toLocaleString() }} x {{ item.quantity }}</p>
+        </div>
+        <div class="actions">
+          <button @click="cart.increase(item)">+</button>
+          <button @click="cart.decrease(item)">-</button>
+          <button @click="cart.remove(item)">🗑️</button>
+        </div>
+      </div>
+
+      <div class="checkout">
+        <h3>Total: Rp{{ cart.totalPrice.toLocaleString() }}</h3>
+        <button class="checkout-btn" @click="checkout">Checkout</button>
+      </div>
+    </div>
+  </section>
+</template>
+
+
+
 <script setup>
 import { useCartStore } from '@/store/cartStore'
 import { ref } from 'vue'
